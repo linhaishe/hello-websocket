@@ -23,6 +23,11 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     io.emit("message", "A user has left chat");
   });
+
+  // listen for chatMessage
+  socket.on("chatMessage", (msg) => {
+    io.emit("message", msg);
+  });
 });
 
 const PORT = process.env.PORT || 3000;
